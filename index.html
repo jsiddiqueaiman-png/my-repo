@@ -1,22 +1,269 @@
-<form action="/submit" method="post">
-    <!-- Text input for username -->
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br><br>
-
-    <!-- Password input -->
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br><br>
-
-    <!-- Radio buttons for gender -->
-    <label>Gender:</label>
-    <input type="radio" id="male" name="gender" value="male">
-    <label for="male">Male</label>
-    <input type="radio" id="female" name="gender" value="female">
-    <label for="female">Female</label>
-    <br><br>
-
-    <!-- Submit button -->
-    <input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura & Volt | Premium Fashion & Tech Accessories</title>
+  <meta name="description" content="Discover luxury clothing and high-end electronic accessories designed with minimal elegance and modern utility.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="glass-panel">
+    <div class="container navbar">
+      <a href="#" class="logo" id="logo-home">
+        <!-- SVG Lightning/Aura Logo -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Aura & Volt
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-category="all" id="nav-all">All Products</a></li>
+        <li><a href="#" class="nav-link" data-category="clothing" id="nav-clothing">Clothing</a></li>
+        <li><a href="#" class="nav-link" data-category="electronics" id="nav-electronics">Tech Accessories</a></li>
+      </ul>
+      <div class="nav-actions">
+        <!-- Dark/Light Theme Toggle -->
+        <button class="nav-btn theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <!-- Shopping Cart Trigger -->
+        <button class="nav-btn cart-toggle" id="cart-toggle" aria-label="Open Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          <span class="cart-count" id="cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- Main Showcase Area -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1>Elegance In Form.<br>Power In Utility.</h1>
+          <p>Explore a curated blend of minimalist luxury apparel and premium high-performance electronic accessories designed for the modern lifestyle.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" id="hero-shop-clothing">Shop Clothing</button>
+            <button class="btn btn-secondary" id="hero-shop-tech">Explore Tech</button>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-back-card"></div>
+          <img class="hero-main-img" src="images/trench_coat.jpg" alt="Aura & Volt Hero Collection Model Coat">
+        </div>
+      </div>
+    </section>
+    <!-- Catalog Section -->
+    <section class="section container" id="shop-section">
+      <div class="section-header">
+        <div>
+          <h2>The Catalog</h2>
+          <p>Curated design items engineered for quality.</p>
+        </div>
+        <!-- Search bar -->
+        <div class="search-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="search-input" placeholder="Search product name or specs...">
+        </div>
+      </div>
+      <!-- Filters & Sorting Tab bar -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Items</button>
+        <button class="filter-tab" data-filter="clothing">Clothing</button>
+        <button class="filter-tab" data-filter="electronics">Tech Accessories</button>
+      </div>
+      <!-- Sorting Select Option -->
+      <div class="sort-container">
+        <label for="sort-select" class="form-label" style="margin-bottom: 0;">Sort By:</label>
+        <select class="sort-select" id="sort-select">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+      <!-- Dynamic Product List Grid -->
+      <div class="products-grid" id="products-grid">
+        <!-- Javascript renders card entries here -->
+      </div>
+    </section>
+  </main>
+  <!-- Cart Drawer Component -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay">
+    <div class="cart-drawer glass-panel">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="cart-close" id="cart-close" aria-label="Close Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="cart-body" id="cart-items-list">
+        <!-- Renders Cart List Item nodes dynamically or Empty State message -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-price" id="cart-subtotal-price">$0.00</span>
+        </div>
+        <button class="btn btn-primary" id="cart-checkout-btn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+  <!-- Product Detail Modal Popup -->
+  <div class="modal-overlay" id="product-detail-modal">
+    <div class="modal-content glass-panel">
+      <button class="close-btn" id="detail-close" aria-label="Close details">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <div class="detail-grid" id="detail-modal-body">
+        <!-- Dynamically rendered detailed content grid goes here -->
+      </div>
+    </div>
+  </div>
+  <!-- Checkout Drawer/Modal -->
+  <div class="modal-overlay checkout-modal" id="checkout-modal">
+    <div class="modal-content glass-panel">
+      <button class="close-btn" id="checkout-close" aria-label="Close checkout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <div class="checkout-body">
+        <h2 class="checkout-title">Complete Order</h2>
+        
+        <!-- Step Indicators -->
+        <div class="checkout-steps">
+          <div class="step-indicator active" id="step-1-indicator">
+            <div class="step-circle">1</div>
+          </div>
+          <div class="step-indicator" id="step-2-indicator">
+            <div class="step-circle">2</div>
+          </div>
+          <div class="step-indicator" id="step-3-indicator">
+            <div class="step-circle">3</div>
+          </div>
+        </div>
+        <form id="checkout-form">
+          <!-- Step 1: Shipping Address Details -->
+          <div class="checkout-step-panel" id="checkout-step-1">
+            <h3 style="margin-bottom: 1.5rem;">Shipping Details</h3>
+            <div class="form-group">
+              <label for="ship-name" class="form-label">Full Name</label>
+              <input type="text" id="ship-name" class="form-input" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="ship-email" class="form-label">Email Address</label>
+              <input type="email" id="ship-email" class="form-input" required placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label for="ship-address" class="form-label">Street Address</label>
+              <input type="text" id="ship-address" class="form-input" required placeholder="123 Luxury Lane">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ship-city" class="form-label">City</label>
+                <input type="text" id="ship-city" class="form-input" required placeholder="New York">
+              </div>
+              <div class="form-group">
+                <label for="ship-zip" class="form-label">ZIP Code</label>
+                <input type="text" id="ship-zip" class="form-input" required placeholder="10001">
+              </div>
+            </div>
+            <div class="checkout-actions">
+              <div></div> <!-- Spacer -->
+              <button type="button" class="btn btn-primary" id="checkout-next-1">Next Step</button>
+            </div>
+          </div>
+          <!-- Step 2: Payment Details (Dummy Credit Card) -->
+          <div class="checkout-step-panel hidden" id="checkout-step-2">
+            <h3 style="margin-bottom: 1.5rem;">Payment Method</h3>
+            <div class="form-group">
+              <label for="pay-cardholder" class="form-label">Cardholder Name</label>
+              <input type="text" id="pay-cardholder" class="form-input" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="pay-cardnumber" class="form-label">Card Number</label>
+              <input type="text" id="pay-cardnumber" class="form-input" required placeholder="4111 2222 3333 4444" maxlength="19">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pay-expiry" class="form-label">Expiry Date</label>
+                <input type="text" id="pay-expiry" class="form-input" required placeholder="MM/YY" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label for="pay-cvv" class="form-label">CVV</label>
+                <input type="password" id="pay-cvv" class="form-input" required placeholder="•••" maxlength="4">
+              </div>
+            </div>
+            <div class="checkout-actions">
+              <button type="button" class="btn btn-secondary" id="checkout-prev-2">Back</button>
+              <button type="submit" class="btn btn-primary" id="checkout-submit">Submit Payment</button>
+            </div>
+          </div>
+          <!-- Step 3: Purchase Success Screens -->
+          <div class="checkout-step-panel hidden success-screen" id="checkout-step-3">
+            <div class="success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 2rem;">Thank you for shopping at Aura & Volt. Your order has been registered and is processing.</p>
+            <button type="button" class="btn btn-primary" id="checkout-success-close">Continue Shopping</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Toast Notification Overlay -->
+  <div class="toast-container" id="toast-container"></div>
+  <!-- Footer Component -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="#" class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Aura & Volt
+        </a>
+        <p>Curated fusion of luxury designer wear and sleek electronic accessories. Engineered with precision.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Twitter/X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Collections</h3>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-filter-link" data-filter="all">All Products</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="clothing">Fashion Couture</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="electronics">Tech Essentials</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Stay Connected</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Subscribe to receive announcements and exclusive drops.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required aria-label="Newsletter email input">
+          <button type="submit" class="btn btn-primary" style="padding: 0 1.25rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Aura & Volt. All rights reserved.</p>
+      <p>Designed with premium minimalism.</p>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

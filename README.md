@@ -1,3 +1,0 @@
-# my-repo
-hello junaid
-
